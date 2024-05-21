@@ -8,7 +8,7 @@
       <link href="/2024/05/20/softerware-testing/"/>
       <url>/2024/05/20/softerware-testing/</url>
       
-        <content type="html"><![CDATA[<h1 id="qaqc-and-testing">QA,QC and Testing</h1><table><colgroup><col style="width: 25%" /><col style="width: 25%" /><col style="width: 25%" /><col style="width: 25%" /></colgroup><thead><tr class="header"><th>Category</th><th>Quality Assurance(QA)</th><th>Quality Control(QC)</th><th>Testing</th></tr></thead><tbody><tr class="odd"><td>Focus</td><td>Process</td><td>Product</td><td>Product</td></tr><tr class="even"><td>Orientation</td><td>Prevention oriented(Preventing mistakes, defects and Failures)</td><td>Verification oriented(Detecting mistakes, defects)</td><td>Verification/validation oriented(Detecting Failures)</td></tr><tr class="odd"><td>Breadth</td><td>Organization wide</td><td>Product/Project Specific</td><td>Product/Project Specific</td></tr><tr class="even"><td>Scope</td><td>Relates oto all products that will ever be created by a process</td><td>Relates to specific product</td><td>Relates to specific product</td></tr><tr class="odd"><td>Work type</td><td>Proactive</td><td>Reactive</td><td>Reactive</td></tr><tr class="even"><td>Activities</td><td>Profess definition, implementation, audits,traing and maps</td><td>Reviews: Informal reviews, walkthrough, technical review,inspection; Static analysis tools</td><td>Test planning, test monitoring and control, test analysis, testdesign, test implementation, test execution,test completion.</td></tr></tbody></table><h1 id="errordefect-and-failure">Error,defect and failure</h1><ul><li>An <strong>error</strong> (mistake) is a <strong>humanaction</strong> that produces an incorrect result (for example writingcode).</li><li>A <strong>defect</strong> (bug, fault) is an <strong>imperfection ordeficiency</strong> in a work product where it does not meet itsrequirements or specifications (for example in the code itself).</li><li>A <strong>failure</strong> is when the system or component does notperform as it should (for example returns the wrong result)</li></ul><h1 id="quality-control-techniques">Quality Control Techniques</h1><h2 id="reviews">Reviews</h2><p>REVIEW is a quality control technique that involves the manualexamination of a work product or process by one or more individuals toidentify any issues and suggest ways to improve it. ## Informal ReviewsINFORMAL REVIEW is a type of review without a formal (documented)procedure. ## Walkthroughs WALKTHROUGH is a type of review in which anauthor leads members of the review through a work product and themembers ask questions and make comments about possible issues. ##Technical Reviews TECHNICAL REVIEW is a formal review type by a team oftechnically qualified personnel that examines the suitability of a workproduct for its intended use and identifies discrepancy fromspecifications and standards. ## Inspections INSPECTION is a type offormal review to identify issues in a work product, which providesmeasurement to improve the review process and the software developmentprocess. ## Static Analysis Tools STATIC ANALYSIS is a quality controltechnique performed by tools to evaluate a component or system withoutexecuting it, based on its form, structure, content ordocumentation.</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="qaqc-and-testing">QA,QC and Testing</h1><table><colgroup><col style="width: 25%" /><col style="width: 25%" /><col style="width: 25%" /><col style="width: 25%" /></colgroup><thead><tr class="header"><th>Category</th><th>Quality Assurance(QA)</th><th>Quality Control(QC)</th><th>Testing</th></tr></thead><tbody><tr class="odd"><td>Focus</td><td>Process</td><td>Product</td><td>Product</td></tr><tr class="even"><td>Orientation</td><td>Prevention oriented(Preventing mistakes, defects and Failures)</td><td>Verification oriented(Detecting mistakes, defects)</td><td>Verification/validation oriented(Detecting Failures)</td></tr><tr class="odd"><td>Breadth</td><td>Organization wide</td><td>Product/Project Specific</td><td>Product/Project Specific</td></tr><tr class="even"><td>Scope</td><td>Relates oto all products that will ever be created by a process</td><td>Relates to specific product</td><td>Relates to specific product</td></tr><tr class="odd"><td>Work type</td><td>Proactive</td><td>Reactive</td><td>Reactive</td></tr><tr class="even"><td>Activities</td><td>Profess definition, implementation, audits,traing and maps</td><td>Reviews: Informal reviews, walkthrough, technical review,inspection; Static analysis tools</td><td>Test planning, test monitoring and control, test analysis, testdesign, test implementation, test execution,test completion.</td></tr></tbody></table><h1 id="errordefect-and-failure">Error,defect and failure</h1><ul><li>An <strong>error</strong> (mistake) is a <strong>humanaction</strong> that produces an incorrect result (for example writingcode).</li><li>A <strong>defect</strong> (bug, fault) is an <strong>imperfection ordeficiency</strong> in a work product where it does not meet itsrequirements or specifications (for example in the code itself).</li><li>A <strong>failure</strong> is when the system or component does notperform as it should (for example returns the wrong result)</li></ul><h1 id="quality-control-techniques">Quality Control Techniques</h1><h2 id="reviews">Reviews</h2><p>REVIEW is a quality control technique that involves the manualexamination of a work product or process by one or more individuals toidentify any issues and suggest ways to improve it.<br />## Informal Reviews<br />INFORMAL REVIEW is a type of review without a formal (documented)procedure.<br />## Walkthroughs<br />WALKTHROUGH is a type of review in which an author leads members of thereview through a work product and the members ask questions and makecomments about possible issues.<br />## Technical Reviews<br />TECHNICAL REVIEW is a formal review type by a team of technicallyqualified personnel that examines the suitability of a work product forits intended use and identifies discrepancy from specifications andstandards.<br />## Inspections<br />INSPECTION is a type of formal review to identify issues in a workproduct, which provides measurement to improve the review process andthe software development process.<br />## Static Analysis Tools<br />STATIC ANALYSIS is a quality control technique performed by tools toevaluate a component or system without executing it, based on its form,structure, content or documentation.</p>]]></content>
       
       
       <categories>
@@ -74,9 +74,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> algorithm </tag>
             
@@ -134,9 +134,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> AI </tag>
             
@@ -165,9 +165,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> algorithm </tag>
             
@@ -304,9 +304,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> Pygame </tag>
             
@@ -582,9 +582,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> algorithm </tag>
             
@@ -613,9 +613,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> algorithm </tag>
             
@@ -642,9 +642,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> DJango </tag>
             
@@ -673,9 +673,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> DJango </tag>
             
@@ -748,9 +748,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> Pytorch </tag>
             
@@ -781,9 +781,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> algorithm </tag>
             
@@ -810,9 +810,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> algorithm </tag>
             
@@ -839,9 +839,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> Data </tag>
             
@@ -870,9 +870,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> Data </tag>
             
@@ -901,9 +901,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> 爬虫 </tag>
             
@@ -930,9 +930,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
         </tags>
       
