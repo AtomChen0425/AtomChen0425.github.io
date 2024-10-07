@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://atomchen0425.github.io/gallery/index.html</loc>
+    
+    <lastmod>2024-10-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://atomchen0425.github.io/gallery/Film.html</loc>
     
     <lastmod>2024-10-07</lastmod>
@@ -12,15 +21,6 @@
   
   <url>
     <loc>http://atomchen0425.github.io/gallery/Fall.html</loc>
-    
-    <lastmod>2024-10-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://atomchen0425.github.io/gallery/index.html</loc>
     
     <lastmod>2024-10-07</lastmod>
     
@@ -461,20 +461,6 @@
 
   
   <url>
-    <loc>http://atomchen0425.github.io/tags/LIFE/</loc>
-    <lastmod>2024-10-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://atomchen0425.github.io/tags/EQUIPMENT/</loc>
-    <lastmod>2024-10-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://atomchen0425.github.io/tags/Study/</loc>
     <lastmod>2024-10-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -496,6 +482,27 @@
   </url>
   
   <url>
+    <loc>http://atomchen0425.github.io/tags/LIFE/</loc>
+    <lastmod>2024-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://atomchen0425.github.io/tags/EQUIPMENT/</loc>
+    <lastmod>2024-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://atomchen0425.github.io/tags/algorithm/</loc>
+    <lastmod>2024-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://atomchen0425.github.io/tags/Data/</loc>
     <lastmod>2024-10-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -510,21 +517,14 @@
   </url>
   
   <url>
-    <loc>http://atomchen0425.github.io/tags/algorithm/</loc>
+    <loc>http://atomchen0425.github.io/tags/DJango/</loc>
     <lastmod>2024-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://atomchen0425.github.io/tags/tkinter/</loc>
-    <lastmod>2024-10-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://atomchen0425.github.io/tags/gui/</loc>
+    <loc>http://atomchen0425.github.io/tags/%E5%90%8E%E7%AB%AF/</loc>
     <lastmod>2024-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -552,21 +552,14 @@
   </url>
   
   <url>
-    <loc>http://atomchen0425.github.io/tags/DJango/</loc>
+    <loc>http://atomchen0425.github.io/tags/tkinter/</loc>
     <lastmod>2024-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://atomchen0425.github.io/tags/%E5%90%8E%E7%AB%AF/</loc>
-    <lastmod>2024-10-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://atomchen0425.github.io/tags/Essay/</loc>
+    <loc>http://atomchen0425.github.io/tags/gui/</loc>
     <lastmod>2024-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -574,6 +567,13 @@
   
   <url>
     <loc>http://atomchen0425.github.io/tags/%E4%B8%AD%E7%AD%89/</loc>
+    <lastmod>2024-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://atomchen0425.github.io/tags/Essay/</loc>
     <lastmod>2024-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -601,6 +601,13 @@
   </url>
   
   <url>
+    <loc>http://atomchen0425.github.io/tags/Pygame/</loc>
+    <lastmod>2024-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://atomchen0425.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
     <lastmod>2024-10-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -609,13 +616,6 @@
   
   <url>
     <loc>http://atomchen0425.github.io/tags/Crawler/</loc>
-    <lastmod>2024-10-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://atomchen0425.github.io/tags/Pygame/</loc>
     <lastmod>2024-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -636,6 +636,13 @@
   </url>
   
   <url>
+    <loc>http://atomchen0425.github.io/tags/Robotics/</loc>
+    <lastmod>2024-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://atomchen0425.github.io/tags/Software-Engineering/</loc>
     <lastmod>2024-10-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -650,14 +657,7 @@
   </url>
   
   <url>
-    <loc>http://atomchen0425.github.io/tags/ENCS-6201/</loc>
-    <lastmod>2024-10-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://atomchen0425.github.io/tags/Robotics/</loc>
+    <loc>http://atomchen0425.github.io/tags/ENCS-692/</loc>
     <lastmod>2024-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -671,20 +671,13 @@
   </url>
   
   <url>
-    <loc>http://atomchen0425.github.io/tags/ENCS-692/</loc>
+    <loc>http://atomchen0425.github.io/tags/ENCS-6201/</loc>
     <lastmod>2024-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
 
-  
-  <url>
-    <loc>http://atomchen0425.github.io/categories/Life/</loc>
-    <lastmod>2024-10-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
   
   <url>
     <loc>http://atomchen0425.github.io/categories/Project/</loc>
@@ -701,7 +694,7 @@
   </url>
   
   <url>
-    <loc>http://atomchen0425.github.io/categories/Notes/</loc>
+    <loc>http://atomchen0425.github.io/categories/Life/</loc>
     <lastmod>2024-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -709,6 +702,13 @@
   
   <url>
     <loc>http://atomchen0425.github.io/categories/Leetcode/</loc>
+    <lastmod>2024-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://atomchen0425.github.io/categories/Notes/</loc>
     <lastmod>2024-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
