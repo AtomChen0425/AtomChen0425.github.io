@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>Evolutionary Algorithms</title>
+      <link href="/2024/10/22/Evolutionary-Algorithms/"/>
+      <url>/2024/10/22/Evolutionary-Algorithms/</url>
+      
+        <content type="html"><![CDATA[<h1 id="what-is-an-evolutionary-algorithm">What is an EvolutionaryAlgorithm?</h1><p>It is a type of optimization algorithm inspired by the principles ofnatural selection and genetics. It's used to solve complex problems byevolving potential solutions over time, mimicking the process ofbiological evolution.</p><p><strong>Main EA components:</strong></p><ul><li>Representation: encoding of solutions</li><li>Evaluation: fitness function</li><li>Population: set of candidate solutions</li><li>Selection: method to choose parents</li><li>Survivor selection: method to choose individuals for the nextgeneration</li><li>Recombination: method to combine parents to create offspring</li><li>Mutation: method to introduce random changes to offspring</li></ul><h1 id="scheme-of-evolutionary-algorithms">Scheme of EvolutionaryAlgorithms</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">BEGIN</span><br><span class="line">    INITIALISE population with random candidate solutions;</span><br><span class="line">    EVALUATE each candidate;</span><br><span class="line">    REPEAT UNTIL TERMINATION CONDITION is satisfied DO</span><br><span class="line">        1 SELECT parents;</span><br><span class="line">        2 RECOMBINE pairs of parents;</span><br><span class="line">        3 MUTATE the resulting offspring;</span><br><span class="line">        4 EVALUATE new candidates;</span><br><span class="line">        5 SELECT individuals for the next generation;</span><br><span class="line">    OD</span><br><span class="line">END</span><br></pre></td></tr></table></figure><h1 id="main-ea-components">Main EA components:</h1><h2 id="representation">Representation</h2><p><strong>Role:</strong> provides code for candidate solutions that canbe manipulated by variation operators</p><p>It incloud two types:</p><ol type="1"><li><strong>Phenotype</strong>: object in orginal problem space</li><li><strong>genotype</strong>: code to denote that object, the inside(chromosome, “digital DNA”)</li></ol><p>Implies two mappings:</p><ul><li><p><strong>Encoding</strong> : phenotype=&gt; genotype (notnecessarily one to one)</p></li><li><p><strong>Decoding</strong> : genotype=&gt; phenotype (must be oneto one)</p></li></ul><p>Examples:</p><h3 id="binary-representation">Binary representation</h3><ul><li>Genotype: 01001011</li><li>Phenotype: 83</li></ul><h3 id="real-valued-representation">Real-valued representation</h3><ul><li>Genotype: [0.1, 0.2, 0.3, 0.4]</li><li>Phenotype: (0.1, 0.2, 0.3, 0.4)</li></ul><h3 id="permutation-representation">Permutation representation</h3><ul><li>Genotype: [3, 1, 2, 4]</li><li>Phenotype: (1, 2, 3, 4)</li></ul><p>The order is important, different order means different solution.</p><h2 id="evaluation">Evaluation</h2><p><strong>Role:</strong> provides fitness values for candidatesolutions</p><p><strong>Fitness function:</strong> function that maps candidatesolutions to fitness values</p><p><strong>Fitness value:</strong> measure of quality of a candidatesolution</p><p><strong>Fitness landscape:</strong> graph of fitness values for allcandidate solutions</p><h2 id="population">Population</h2><p><strong>Role:</strong> holds the candidate solutions of the problemas individuals (genotypes)</p><p><strong>Population size:</strong> number of candidate solutions in apopulation</p><p>Selection operators act on <strong>population level</strong></p><p>Variation operators act on <strong>individual level</strong> ###Diversity</p><p>Diversity of a population refers to the number of different fitnesses/ phenotypes / genotypes present (note: not the same thing)</p><h3 id="selection-pressure">Selection pressure</h3><p>Takeover time <span class="math inline">\(\tau^*\)</span> is ameasure to quantify the selection pressure</p><p><span class="math display">\[\tau^* =\frac{\ln(\lambda)}{\ln(\frac{\lambda}{\mu})}\]</span></p><pre><code>where $\lambda$ is the population size and $\mu$ is the number of offspring produced per generation.</code></pre><p><strong>Relationship:</strong></p><pre><code>High selection pressure -&gt; Low diversityLow selection pressure -&gt; High diversity</code></pre><h2 id="selection">Selection</h2><p><strong>Role:</strong> Identifies individuals to become parents or tosurvive</p><p><strong>Usually probabilistic</strong></p><ul><li><p>high quality solutions more likely to be selected than lowquality</p></li><li><p>even worst in current population usually has non-zero probabilityof being selected</p></li></ul><h3 id="when-do-this">When do this</h3><p><imgsrc="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Evolution-Algorithms/image.45hnxd7oxd.webp"alt="image" /> ### <strong>Selection methods:</strong><br />#### <strong>Roulette wheel selection</strong></p><ul><li>Parents are chosen based on their fitness values</li><li>Better solutions have a higher chance of being selected</li></ul><h4 id="tournament-selection"><strong>Tournament selection</strong></h4><ul><li>Parents are chosen based on a random sample of the population</li><li>The best solution in the sample is selected</li></ul><h4 id="rank-based-selection"><strong>Rank-based selection</strong></h4><h2 id="variation">Variation</h2><p><strong>Role:</strong> Generates new candidate solutions fromparents</p><p>Usually divided into two types according to their<strong>arity</strong> (number of inputs):</p><ul><li>Arity 1 : mutation operators</li><li>Arity &gt;1 : recombination operators</li><li>Arity = 2 typically called crossover</li><li>Arity &gt; 2 is formally possible, seldom used in EC</li></ul><h3 id="variation-operators"><strong>Variation operators:</strong></h3><h4 id="crossover"><strong>Crossover</strong></h4><ul><li><p>Combines two parents to create offspring</p></li><li><p>Commonly used in genetic algorithms</p></li><li><p>Can be used to introduce new genetic material into the population##### one-point crossover <imgsrc="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Evolution-Algorithms/image.4jo3o8ir8m.webp"alt="image" /></p></li><li><p>More likely to keep together genes that are near eachother</p></li><li><p>Can never keep together genes from opposite ends ofstring</p></li><li><p>This is known as <strong>Positional Bias</strong></p></li><li><p>Can be exploited if we know about the structure of our problem,but this is not usually the case</p></li></ul><h5 id="n-point-crossover">n-point crossover</h5><figure><imgsrc="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Evolution-Algorithms/image.8hgh4wvdcl.webp"alt="image" /><figcaption aria-hidden="true">image</figcaption></figure><p>n-point crossover has an <strong>inherent bias</strong> in that ittends to keep together genes that are located close to each other</p><h5 id="uniform-crossover">Uniform crossover</h5><figure><imgsrc="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Evolution-Algorithms/image.99tcmnd9xl.webp"alt="image" /><figcaption aria-hidden="true">image</figcaption></figure><p>In contrast, uniform crossover does not exhibit any positional bias.However, unlike n-point crossover, uniform crossover does have a strongtendency towards transmitting 50% of the genes from each parent andagainst transmitting an offspring a large number of coadapted genes fromone parent. This is known as distributional bias.</p><h4 id="mutation"><strong>Mutation</strong></h4><ul><li>Introduces random changes to an individual ##### Unifor mutation<imgsrc="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Evolution-Algorithms/image.92q4r9pnb9.webp"alt="image" /></li></ul><h5 id="non-uniform-mutation">Non-uniform mutation</h5><figure><imgsrc="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Evolution-Algorithms/image.5tr0um2odh.webp"alt="image" /><figcaption aria-hidden="true">image</figcaption></figure><h5 id="adaptive-mutation">adaptive mutation:</h5><p>The essential feature is that the step sizes are also included in thechromosomes and they themselves undergo variation and selection.</p><p>Mutation step size is not set by user but coevolves with solution</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Notes </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> Study </tag>
+            
+            <tag> AI </tag>
+            
+            <tag> Machine learning </tag>
+            
+            <tag> Evolutionary Algorithms </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ENCS692-2024-fall</title>
       <link href="/2024/09/17/ENCS692-2024-fall/"/>
       <url>/2024/09/17/ENCS692-2024-fall/</url>
@@ -101,9 +134,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> algorithm </tag>
             
@@ -161,9 +194,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> AI </tag>
             
@@ -192,9 +225,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> algorithm </tag>
             
@@ -331,9 +364,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> Pygame </tag>
             
@@ -609,9 +642,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> algorithm </tag>
             
@@ -640,9 +673,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> algorithm </tag>
             
@@ -669,9 +702,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> DJango </tag>
             
@@ -700,9 +733,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> DJango </tag>
             
@@ -775,9 +808,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> Pytorch </tag>
             
@@ -808,9 +841,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> algorithm </tag>
             
@@ -837,9 +870,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> algorithm </tag>
             
@@ -866,9 +899,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> Data </tag>
             
@@ -897,9 +930,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> Data </tag>
             
@@ -928,9 +961,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
             <tag> 爬虫 </tag>
             
@@ -957,9 +990,9 @@
       
         <tags>
             
-            <tag> Study </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Study </tag>
             
         </tags>
       
