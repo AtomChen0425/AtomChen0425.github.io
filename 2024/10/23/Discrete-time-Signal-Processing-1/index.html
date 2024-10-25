@@ -1,0 +1,661 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Discrete-time Signal Processing (1) | Dreaming</title><meta name="keywords" content="Study,Signal Processing"><meta name="author" content="Yuhang Chen"><meta name="copyright" content="Yuhang Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Discrete-Time Signals Define A discrete-time signal is a sequence of numbers that are defined at discrete points in time. It is often represented as a function of an integer variable, such as \(x[">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Discrete-time Signal Processing (1)">
+<meta property="og:url" content="http://atomchen0425.github.io/2024/10/23/Discrete-time-Signal-Processing-1/index.html">
+<meta property="og:site_name" content="Dreaming">
+<meta property="og:description" content="Discrete-Time Signals Define A discrete-time signal is a sequence of numbers that are defined at discrete points in time. It is often represented as a function of an integer variable, such as \(x[">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://atomchen0425.github.io/img/favicon.png">
+<meta property="article:published_time" content="2024-10-23T23:50:38.000Z">
+<meta property="article:modified_time" content="2024-10-25T02:20:16.336Z">
+<meta property="article:author" content="Yuhang Chen">
+<meta property="article:tag" content="Study">
+<meta property="article:tag" content="Signal Processing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://atomchen0425.github.io/img/favicon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://atomchen0425.github.io/2024/10/23/Discrete-time-Signal-Processing-1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?6e088103de54a760ddaa12b65dea0898";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-Q463DDJ4VD"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Q463DDJ4VD');
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":100},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"Author: Yuhang Chen","link":"Link: ","source":"Source: Dreaming","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Discrete-time Signal Processing (1)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-24 22:20:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="google-site-verification" content="m4phqV7W1Mjaqhxm7RduAHJdT-Am_7ZXMjCG5yPNGbw" /><link rel="stylesheet" href="//at.alicdn.com/t/font_3261664_6l4hj6o85xj.css"><meta name="baidu-site-verification" content="code-unKEYLRHwi" /><script type="text/javascript" src='/js/skiphttps.js'></script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">40</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> Gallery</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/favicon.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Dreaming</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> Gallery</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Discrete-time Signal Processing (1)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-10-23T23:50:38.000Z" title="Created 2024-10-23 19:50:38">2024-10-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-10-25T02:20:16.336Z" title="Updated 2024-10-24 22:20:16">2024-10-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Notes/">Notes</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>12min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Discrete-time Signal Processing (1)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><a href="/2024/10/23/Discrete-time-Signal-Processing-1/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2024/10/23/Discrete-time-Signal-Processing-1/" itemprop="commentCount"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="discrete-time-signals">Discrete-Time Signals</h1>
+<h2 id="define">Define</h2>
+<p>A discrete-time signal is a sequence of numbers that are defined at
+discrete points in time. It is often represented as a function of an
+integer variable, such as <span class="math inline">\(x[n]\)</span> or
+<span class="math inline">\(x(n)\)</span>, where <span
+class="math inline">\(n\)</span> is the time index.</p>
+<p><span class="math display">\[x={x[n]},n \in Z\]</span></p>
+<p>This sequence can be sampled from a continuous-time signal <span
+class="math inline">\(x(t)\)</span></p>
+<p><span class="math display">\[x[n] = x_a(nT), ,n \in Z\]</span></p>
+<p>where T is the sampling period and its <span
+class="math inline">\(\frac{1}{T}\)</span> is the sampling
+frequency.</p>
+<h2 id="basic-sequences">Basic sequences</h2>
+<h3 id="unit-sample">Unit sample</h3>
+<p><span class="math display">\[\delta[n]=\left\{\begin{matrix} 1, &amp;
+n=0\\  0, &amp; n\neq 0 \end{matrix}\right.\]</span></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Evolution-Algorithms/image.8ojp1mp0nq.webp" /></p>
+<p>Any sequence can be expressed as</p>
+<p><span class="math display">\[x[n] = \displaystyle{
+\sum_{k=-\infty}^{\infty}x[k]\delta[n-k] }\]</span></p>
+<h3 id="unit-step">Unit step</h3>
+<p><span class="math display">\[u[n]=\left\{\begin{matrix} 1, &amp;
+n\geq 0\\  0, &amp; n&lt; 0 \end{matrix}\right.\]</span></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Signal-process/image.4qrbkyg61b.webp" /></p>
+<p>It also can be expressed as</p>
+<p><span class="math display">\[u[n] = \displaystyle{
+\sum_{k=-\infty}^{n}\delta[k] }\]</span></p>
+<p><span class="math display">\[u[n] = \displaystyle{
+\sum_{k=0}^{\infty}\delta[n-k] }\]</span></p>
+<p><span class="math display">\[\delta[n] = u[n] - u[n-1]\]</span> ###
+Exponential</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Signal-process/image.4uaxipwut4.webp" /></p>
+<p><span class="math display">\[x[n] = Aa^n u[n]\]</span></p>
+<p>If A,α are both complex numbers</p>
+<p><span class="math display">\[\left\{\begin{matrix} A&amp; = &amp;
+|A|(cos\phi+jsin\phi)&amp;=&amp;|A|e^{j\phi} \\  \alpha &amp; = &amp;
+|\alpha|(cos\omega_0+jsin\omega_0) &amp;=&amp;|\alpha|e^{j\omega_0}
+\end{matrix}\right.\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[\begin{align*} x[n] &amp;=
+A\alpha^n\\   &amp;= |A|e^{j\phi}|\alpha|^ne^{j\omega_0n}\\   &amp;=
+|A||\alpha|^ne^{j(\omega_0n+\phi)}\\  &amp;=
+|A||\alpha|^ncos(\omega_0n+\phi)+j|A||\alpha|^nsin(\omega_0n+\phi)
+\end{align*}\]</span></p>
+<p>When <span class="math inline">\(\alpha=1\)</span></p>
+<p><span class="math display">\[x[n] = |A|e^{j(\omega_0n+\phi)} =
+|A|cos(\omega_0n+\phi)+j|A|sin(\omega_0n+\phi)\]</span> ### Sinusoid</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Signal-process/image.361klj70vt.webp" /></p>
+<p><span class="math display">\[x[n] =
+A\sin(\omega_0n+\phi)\]</span></p>
+<h2
+id="difference-between-discrete-time-sinusoidal-series-and-continuous-time-sinusoidal-signals">Difference
+between discrete-time sinusoidal series and continuous-time sinusoidal
+signals</h2>
+<h3 id="frequency">Frequency</h3>
+<p>Assuming a frequency <span class="math inline">\((\omega_0 +
+2\pi)\)</span></p>
+<p>If it is a continuous time sinusoidal signal, then there are</p>
+<p><span class="math display">\[f(t) = Acos((\omega_0+2\pi)t +
+\phi)\]</span></p>
+<p>If it is a discrete-time sinusoidal signal, then there are</p>
+<p><span class="math display">\[x[n] = Acos[\omega_0n+2\pi n + \phi] =
+Acos[\omega_0 n + \phi]\]</span></p>
+<p>We can see that discrete-time sinusoidal sequences with frequency
+<span class="math inline">\((\omega_0 + 2\pi k)\)</span> (where k is an
+arbitrary integer) are indistinguishable from each other, i.e., the
+frequency remains <span class="math inline">\(\omega_0\)</span></p>
+<h3 id="period">Period</h3>
+<p>For continuous time sinusoidal signals</p>
+<p><span class="math display">\[f(t) = Acos(\omega_0t+\phi)\]</span> The
+period of this signal <span
+class="math inline">\(T=\frac{2\pi}{\omega_0}\)</span></p>
+<p>For discrete-time sinusoidal signals</p>
+<p><span class="math display">\[x[n] = Acos[\omega_0n+\phi]\]</span></p>
+<p>In the discrete time case, a periodic sequence should satisfy</p>
+<p><span class="math display">\[x[n] = x[n+N]\]</span></p>
+<p>The period N in Equation must be an integer. If this condition is
+used to test the periodicity of a discrete-time sinusoidal sequence, we
+have</p>
+<p><span class="math display">\[Acos(\omega_0n+\phi) =
+Acos(\omega_0n+\omega_0N+\phi)\]</span></p>
+<p><span class="math display">\[\omega_0N = 2\pi k\]</span></p>
+<p>Where k is an integer. It can be seen that the value of the period N
+is not necessarily equal to <span
+class="math inline">\(\frac{2\pi}{\omega_0}\)</span>, this is because N
+must be an integer.</p>
+<h1 id="discrete-time-systems">Discrete-time systems</h1>
+<p>Mathematically defined as transformation that maps input sequence
+x[n] into an output y[n]</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Signal-process/image.1vynf85qyb.webp" /></p>
+<h2 id="memoryless-system">Memoryless System</h2>
+<p>If the output y[n] at every value of n depends only on the input x[n]
+at the same value of n.</p>
+<p>Exp. <span class="math display">\[y[n] = (x[n])^2 , for\space
+each\space n\]</span></p>
+<h2 id="linear-systems">Linear Systems</h2>
+<p>Defined by the principle of superposition for its input and
+output.</p>
+<p>It satisfies the following two conditions:</p>
+<p><span class="math display">\[\begin{align*} &amp;T\{x_1[n]+x_2[n]\}
+&amp;=&amp; T\{x_1[n]\}+T\{x_2[n]\} &amp;=&amp; y_1[n]+y_2[n]\\
+&amp;T\{ax[n]\}&amp;=&amp;aT\{x[n]\}&amp;=&amp;ay[n]
+\end{align*}\]</span></p>
+<p>Where <code>a</code> is an arbitrary constant. The combination of
+these two properties is known as the principle of superposition and is
+written as</p>
+<p><span class="math display">\[T\{ax_1[n]+bx_2[n]\} =
+aT\{x_1[n]\}+bT\{x_2[n]\}\]</span></p>
+<p><strong>Example:</strong></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Signal-process/image.2veqseu8du.webp" /></p>
+<h2 id="time-invariant-systems">Time-Invariant Systems</h2>
+<p>A system for which a time shift or delay of the input sequence causes
+a corresponding shift in the output sequence. <span
+class="math display">\[T\{x[n-n_0]\} = y[n-n_0]\]</span></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Signal-process/image.3d4sgzwfci.webp" /></p>
+<h2 id="causal-systems">Causal Systems</h2>
+<p>When the output at sample n, i.e. y[n], only depends on the present
+and/or past values of input x[n]. The value of the output sequence at n
+= n0 depends only on the value of the input sequence at n &lt;= n0</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Signal-process/image.1ovfjt6ixy.webp" /></p>
+<h2 id="stability">Stability</h2>
+<p>(in BIBO sense) A system where the response of finite inputs do not
+diverge.</p>
+<p><span class="math display">\[|x[n]|\leqslant B_x &lt; \infty,\ for\
+each\ n\]</span> <span class="math display">\[|y[n]|\leqslant B_y &lt;
+\infty,\ for\ each\ n\]</span></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Signal-process/image.5j472rpang.webp" /></p>
+<h1 id="lti-systems">LTI Systems</h1>
+<p>These systems are both Linear and Time Invariant.</p>
+<p>They have significant applications in DT signal processing.</p>
+<p>There is a very convenient representation form for these systems,
+using convolutional sum.</p>
+<p><span class="math display">\[y[n] = x[n]*h[n] =
+\sum_{k=-\infty}^{\infty}x[k]h[n-k]\]</span></p>
+<p>Where <code>*</code> denotes convolution operation.</p>
+<p>Where <code>h[n]</code> is called the impulse response of the
+system.</p>
+<p><strong>Important Formula</strong></p>
+<p><span class="math display">\[\sum_{k=-N1}^{N2}a^k = \frac{a^{N_1} -
+a^{N_2+1}}{1-a}\]</span></p>
+<h2 id="properties-of-lti-systems">Properties of LTI Systems</h2>
+<h3 id="commutative-property">Commutative property:</h3>
+<p><span class="math display">\[\begin{align*} y[n] &amp;=x[n]*h[n]
+\\  &amp;=\sum_{m=-\infty}^{\infty}x[n-m]h[m]  \\   &amp;=\sum_{p=-\infty}^{\infty}x[p]h[n-p]
+\quad letting\ p=n-m \\   &amp;=\sum_{p=-\infty}^{\infty}h[n-p]x[p]
+\\  &amp;=h[n]*x[n]  \end{align*}\]</span></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Signal-process/image.7p3lok5i59.webp" /></p>
+<h3 id="associative-property">Associative property:</h3>
+<p><span class="math display">\[\begin{align*} y[n]
+&amp;=(x[n]*h_1[n])*h_2[n] \\  &amp;=z[n]*h_2[n]
+\\  &amp;=\sum_{m=-\infty}^{\infty}z[n-m]h_2[m]
+\\  &amp;=\sum_{p=-\infty}^{\infty}z[p]h_2[n-p] \quad letting\
+p=n-m\\   &amp;=\sum_{p=-\infty}^{\infty}\left (
+\sum_{i=-\infty}^{\infty}x[p-i]h_1[i] \right )h_2[n-p]
+\\   &amp;=\sum_{p=-\infty}^{\infty}\left (
+\sum_{q=-\infty}^{\infty}x[q]h_1[p-q] \right )h_2[n-p] \quad letting\
+q=p-i\\  &amp;=\sum_{q=-\infty}^{\infty}x[q]\left (
+\sum_{p=-\infty}^{\infty}h_1[p-q]h_2[n-p] \right )
+\\  &amp;=\sum_{q=-\infty}^{\infty}x[q]\left (
+\sum_{m=-\infty}^{\infty}h_1[n-q-m]h_2[m] \right )
+\\  &amp;=\sum_{k=-\infty}^{\infty}x[n-k]\left (
+\sum_{m=-\infty}^{\infty}h_1[k-m]h_2[m] \right ) \quad letting\ k=n-q
+\\  &amp;=x[n]*(h_1[n]*h_2[n]) \end{align*}\]</span></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Signal-process/image.7ax5xoxluk.webp" /></p>
+<h3 id="distributive-property">Distributive property:</h3>
+<p><span class="math display">\[\begin{align*} y[n] &amp;=x[n]*h[n]
+\\  &amp;=x[n]*(h_1[n]+h_2[n])
+\\  &amp;=\sum_{m=-\infty}^{\infty}x[n-m](h_1[m]+h_2[m])  \\   &amp;=\sum_{m=-\infty}^{\infty}x[n-m]h_1[m]+\sum_{m=-\infty}^{\infty}x[n-m]h_2[m]
+\\   &amp;=x[n]*h_1[n]+x[n]*h_2[n]  \end{align*}\]</span></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Signal-process/image.41y211aeuw.webp" /></p>
+<h3 id="time-shifting-property">Time shifting property:</h3>
+<p>If <span class="math inline">\(𝑦[𝑛] = 𝑥[𝑛] ∗ ℎ[𝑛]\)</span> , then
+<span class="math inline">\(𝑥[𝑛 − 𝑛1] ∗ ℎ [𝑛 − 𝑛2] = 𝑦 [𝑛 − 𝑛1 −
+𝑛2]\)</span></p>
+<h3 id="causallity">Causallity:</h3>
+<p>An LTI system is causal if and only if <span
+class="math inline">\(ℎ[𝑛] = 0\)</span> for <span
+class="math inline">\(𝑛 &lt; 0\)</span> , then <span
+class="math inline">\(𝑦[𝑛] = 0\)</span> for <span
+class="math inline">\(𝑛 &lt; 0\)</span></p>
+<h3 id="finite">Finite</h3>
+<p>If 𝑥[𝑛] and ℎ[𝑛] are of finite duration, then 𝑦[𝑛] is of finite
+duration.</p>
+<p>In particular, if 𝑥[𝑛] is of length 𝑁1, and ℎ[𝑛] is of length 𝑁2,
+then 𝑦[𝑛] is of length 𝑁1 +𝑁2 −1.</p>
+<h3 id="stability-1">Stability:</h3>
+<p>An LTI system is BIBO stable if and only if <span
+class="math display">\[\sum_{k=-\infin}^{\infin}|ℎ[k]| &lt;
+\infin\]</span></p>
+<h2 id="example">EXAMPLE</h2>
+<h3 id="delay-system">Delay system</h3>
+<p><span class="math display">\[y[n] = x[n-n_d]\]</span></p>
+<p><span class="math display">\[h[n] = \delta[n-n_d]\]</span></p>
+<h3 id="moving-averag">Moving averag</h3>
+<p><span class="math display">\[y[n] = \frac{1}{M_1+M_2+1}\displaystyle{
+\sum_{k=-M_1}^{M_2}x[n-k] }\]</span></p>
+<p><span class="math display">\[\begin{align*} h[n]
+&amp;=\frac{1}{M_1+M_2+1}\sum_{k=-M_1}^{M_2}\delta[n-k] \\ &amp;=\left
+\{\begin{matrix} \frac{1}{M_1+M_2+1}, &amp; -M_1\leqslant n\leqslant M_2
+\\  0, &amp; \ else  \end{matrix}\right.\\
+&amp;=\frac{1}{M_1+M_2+1}(u[n+M_1]-u[n-M_2-1]) \\
+&amp;=\frac{1}{M_1+M_2+1}(\delta[n+M_1]-\delta[n-M_2-1])*u[n]
+\end{align*}\]</span></p>
+<h3 id="accumulator">Accumulator</h3>
+<p><span class="math display">\[y[n] = \displaystyle{
+\sum_{k=-\infty}^{n}x[k] }\]</span></p>
+<p><span class="math display">\[\begin{align*} h[n] &amp;=
+\sum_{k=-\infty}^{n}\delta[k]\\   &amp;=\sum_{k=-\infty}^{0}\delta[n+k]
+\\   &amp;= \left\{\begin{matrix} 1 &amp;,n\geqslant 0 \\  0
+&amp;,n&lt;0  \end{matrix}\right. \\ &amp;=u[n]
+\end{align*}\]</span></p>
+<h3 id="forward-difference">Forward difference</h3>
+<p><span class="math display">\[y[n] = x[n+1]-x[n]\]</span></p>
+<p><span class="math display">\[h[n] =
+\delta[n+1]-\delta[n]\]</span></p>
+<h3 id="backward-difference">Backward difference</h3>
+<p><span class="math display">\[y[n] = x[n]-x[n-1]\]</span></p>
+<p><span class="math display">\[h[n] =
+\delta[n]-\delta[n-1]\]</span></p>
+<h1 id="linear-constant-coefficient-difference-equations">Linear
+Constant-Coefficient Difference Equations</h1>
+<p>They are an important class of LTI systems where the input x[n] and
+the output y[n] satisfy an Nth order linear constant coefficient
+difference equation as follows:</p>
+<p><span class="math display">\[\displaystyle{ \sum_{k=0}^{N}a_k
+y[n-k]=\sum_{m=0}^{M}b_m x[n-m] }\]</span></p>
+<p>When we solve the difference equation, we will assume <span
+class="math inline">\(y_h[n] = Az^n\)</span></p>
+<p>Then we can get</p>
+<p><span class="math display">\[\displaystyle{ \sum_{k=0}^{N}a_k z^{-k}
+} = 0\]</span> <span class="math display">\[y_h[n] = \displaystyle{
+\sum_{m=1}^{N}A_m z_m^n }\]</span></p>
+<h2 id="initial-rest-condition">initial-rest condition</h2>
+<p><span class="math display">\[if\ x[n]=0,\  n&lt;n_0 \quad then \
+y[n]=0,\  n&lt;n_0 \]</span></p>
+<h1
+id="frequency-domain-representation-of-signals-and-systems">Frequency
+domain representation of signals and systems</h1>
+<p>For an LTI system, if the input is <span class="math inline">\(x[n] =
+e^{j\omega n},-\infty&lt;n&lt;\infty\)</span> then the output is</p>
+<p><span class="math display">\[\begin{align*} y[n]
+&amp;=  \sum_{k=-\infty}^{\infty}h[k]x[n-k] \\
+&amp;=\sum_{k=-\infty}^{\infty}h[k]e^{j\omega(n-k)}\\
+&amp;=\sum_{k=-\infty}^{\infty}h[k]e^{-j\omega k}e^{j\omega n}
+\end{align*}\]</span></p>
+<p><span class="math display">\[H(e^{j\omega}) = \displaystyle{
+\sum_{k=-\infty}^{\infty}h[k]e^{-j\omega k} }\]</span></p>
+<p>It can be observed that eigenvalues <span
+class="math inline">\(H(e^{j\omega})\)</span> are a function ω of
+frequency dependent, so eigenvalues <span
+class="math inline">\(H(e^{j\omega})\)</span> are also known as the
+frequency response of the system. Generally, <span
+class="math inline">\(H(e^{j\omega})\)</span> it is a complex number and
+can be divided into real and imaginary representations</p>
+<p><span class="math display">\[H(e^{j\omega}) = H_R(e^{j\omega}) +
+jH_I(e^{j\omega})\]</span></p>
+<p><span class="math display">\[H(e^{j\omega}) =
+|H(e^{j\omega})|e^{j\angle H(e^{j\omega)}}\]</span></p>
+<p>And the Frequency response has periodicity.</p>
+<p><span class="math display">\[\begin{align*} H(e^{j(\omega+2\pi)})
+&amp;= \sum_{n=-\infty}^{\infty}h[n]e^{-j(\omega+2\pi)n} \\ &amp;=
+\sum_{n=-\infty}^{\infty}h[n](e^{-j\omega n}e^{-j2\pi n})\\ &amp;=
+\sum_{n=-\infty}^{\infty}h[n]e^{-j\omega n}\\ &amp;= H(e^{j\omega})
+\end{align*}\]</span></p>
+<p>If</p>
+<p><span class="math display">\[x[n] = Acos (\omega_0 + \phi) =
+\frac{A}{2}e^{j\phi}e^{j\omega_0 n} + \frac{A}{2}e^{-j\phi}e^{-j\omega_0
+n}\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[\begin{align*} y[n] &amp;=
+\frac{A}{2}\{H(e^{j\omega_0})e^{j\theta}e^{j\omega_0
+n}+H(e^{-j\omega_0})e^{-j\theta}e^{-j\omega_0 n} \} \\ &amp;=
+\frac{A}{2}\{[H_R(e^{j
+\omega_0})+jH_I(e^{j\omega_0})]e^{j\theta}e^{j\omega_0 n}+[H_R(e^{j
+\omega_0})-jH_I(e^{j\omega_0})]e^{-j\theta}e^{-j\omega_0 n} \} \\
+&amp;\qquad h[n]\ is\ real\Rightarrow
+H(e^{-j\omega_0})=H^{*}(e^{j\omega_0})\\ &amp;= \frac{A}{2}\{
+H_R(e^{j\omega_0})(e^{j\theta}e^{j\omega_0 n}+e^{-j\theta}e^{-j\omega_0
+n})+jH_I(e^{j\omega_0})(e^{j\theta}e^{j\omega_0
+n}-e^{-j\theta}e^{-j\omega_0 n}) \} \\ &amp;= \frac{A}{2} \{
+2H_R(e^{j\omega_0})cos(\omega_0 n + \theta) -
+2H_I(e^{j\omega_0})sin(\omega_0 n + \theta) \} \\ &amp;= A \{
+H_R(e^{j\omega_0})cos(\omega_0 n + \theta) -
+H_I(e^{j\omega_0})sin(\omega_0 n + \theta) \} \\ &amp;= A\{
+|H(e^{j\omega_0})|cos(\phi)cos(\omega_0 n
++\theta)-|H(e^{j\omega_0})|sin(\phi)sin(\omega_0 n +\theta)\} \quad
+letting\ \phi=\angle H(e^{j\omega_0})\\ &amp;= A |H(e^{j\omega_0})|
+cos(\omega_0 n +\theta+\phi) \end{align*}\]</span></p>
+<h1 id="discrete-time-fourier-transform">Discrete-Time Fourier
+Transform</h1>
+<p><span class="math display">\[{X(e^{j\omega}) = \displaystyle{
+\sum_{n=-\infty}^{\infty}x[n]e^{-j\omega n} }}\]</span></p>
+<p><span class="math display">\[{\displaystyle{x[n] =
+\frac{1}{2\pi}\int_{-\pi}^{\pi}X(e^{j\omega})e^{j\omega n}d\omega
+}}\]</span></p>
+<p><span class="math display">\[x[n] = x_e[n]+x_o[n]\]</span></p>
+<p><span class="math display">\[\left\{\begin{matrix} x_e[n]
+&amp;=&amp;\frac{1}{2}(x[n]+x^*[-n]) &amp;=&amp;x_e^*[-n] \\  x_o[n]
+&amp;=&amp;\frac{1}{2}(x[n]-x^*[-n])
+&amp;=&amp;-x_o^*[-n]  \end{matrix}\right.\]</span></p>
+<p><span class="math display">\[X(e^{j\omega}) =
+X_e(e^{j\omega})+X_o(e^{j\omega})\]</span></p>
+<p><span class="math display">\[\left\{\begin{matrix} X_e(e^{j\omega})
+&amp;=&amp;\frac{1}{2}[X(e^{j\omega})+X^*(e^{j\omega})]
+&amp;=&amp;X_e^*(e^{j\omega}) \\  X_o(e^{j\omega})
+&amp;=&amp;\frac{1}{2}[X(e^{j\omega})-X^*(e^{j\omega})]
+&amp;=&amp;-X_o^*(e^{j\omega})  \end{matrix}\right.\]</span></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Signal-process/image.8z6iwc87fz.webp" /></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Signal-process/image.pfc84ewye.webp" /></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Signal-process/image.2rv4w6dy3t.webp" /></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Yuhang Chen</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://atomchen0425.github.io/2024/10/23/Discrete-time-Signal-Processing-1/">http://atomchen0425.github.io/2024/10/23/Discrete-time-Signal-Processing-1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Study/">Study</a><a class="post-meta__tags" href="/tags/Signal-Processing/">Signal Processing</a></div><div class="post_share"><div class="social-share" data-image="/img/favicon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/WeChanSQ.png" target="_blank"><img class="post-qr-code-img" src="/img/WeChanSQ.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/AliPayQR.png" target="_blank"><img class="post-qr-code-img" src="/img/AliPayQR.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/10/24/Discrete-time-Signal-Processing-2/"><img class="prev-cover" src="/img/favicon.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Discrete-time Signal Processing (2)</div></div></a></div><div class="next-post pull-right"><a href="/2024/10/22/Evolutionary-Algorithms/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Evolution-Algorithms/image.3goed9yogn.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Evolutionary Algorithms</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2024/10/24/Discrete-time-Signal-Processing-2/" title="Discrete-time Signal Processing (2)"><img class="cover" src="/img/favicon.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-24</div><div class="title">Discrete-time Signal Processing (2)</div></div></a></div><div><a href="/2022/03/21/words-memory/" title="背单词小脚本"><img class="cover" src="/img/favicon.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-21</div><div class="title">背单词小脚本</div></div></a></div><div><a href="/2022/03/22/Selenium/" title="Selenium使用手册"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbkimg.cdn.bcebos.com%2Fpic%2F279759ee3d6d55fb3cfdd81761224f4a20a4ddcc&refer=http%3A%2F%2Fbkimg.cdn.bcebos.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650506145&t=31abef05e1dc237fda46baf33bbadf6b" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-22</div><div class="title">Selenium使用手册</div></div></a></div><div><a href="/2022/03/23/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" title="快速排序"><img class="cover" src="/img/favicon.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-23</div><div class="title">快速排序</div></div></a></div><div><a href="/2022/03/23/pandas/" title="Pandas用法（一）"><img class="cover" src="https://www.runoob.com/wp-content/uploads/2021/04/pandas.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-23</div><div class="title">Pandas用法（一）</div></div></a></div><div><a href="/2022/03/23/pandas2/" title="Pandas用法（二）"><img class="cover" src="https://www.runoob.com/wp-content/uploads/2021/04/pandas.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-23</div><div class="title">Pandas用法（二）</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Yuhang Chen</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">40</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/waterkingest"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/waterkingest" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:yuhangchen0425@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=727466381&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fa-brands fa-qq"></i></a><a class="social-icon" href="https://www.linkedin.com/in/yuhangchen1" target="_blank" title="Linkedin"><i class="fa-brands fa-linkedin"></i></a><a class="social-icon" href="https://www.instagram.com/lovelyxgao/" target="_blank" title="Instagram"><i class="fa-brands fa-square-instagram"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#discrete-time-signals"><span class="toc-number">1.</span> <span class="toc-text">Discrete-Time Signals</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#define"><span class="toc-number">1.1.</span> <span class="toc-text">Define</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#basic-sequences"><span class="toc-number">1.2.</span> <span class="toc-text">Basic sequences</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#unit-sample"><span class="toc-number">1.2.1.</span> <span class="toc-text">Unit sample</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unit-step"><span class="toc-number">1.2.2.</span> <span class="toc-text">Unit step</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#difference-between-discrete-time-sinusoidal-series-and-continuous-time-sinusoidal-signals"><span class="toc-number">1.3.</span> <span class="toc-text">Difference
+between discrete-time sinusoidal series and continuous-time sinusoidal
+signals</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#frequency"><span class="toc-number">1.3.1.</span> <span class="toc-text">Frequency</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#period"><span class="toc-number">1.3.2.</span> <span class="toc-text">Period</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#discrete-time-systems"><span class="toc-number">2.</span> <span class="toc-text">Discrete-time systems</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#memoryless-system"><span class="toc-number">2.1.</span> <span class="toc-text">Memoryless System</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linear-systems"><span class="toc-number">2.2.</span> <span class="toc-text">Linear Systems</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#time-invariant-systems"><span class="toc-number">2.3.</span> <span class="toc-text">Time-Invariant Systems</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#causal-systems"><span class="toc-number">2.4.</span> <span class="toc-text">Causal Systems</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stability"><span class="toc-number">2.5.</span> <span class="toc-text">Stability</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#lti-systems"><span class="toc-number">3.</span> <span class="toc-text">LTI Systems</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#properties-of-lti-systems"><span class="toc-number">3.1.</span> <span class="toc-text">Properties of LTI Systems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#commutative-property"><span class="toc-number">3.1.1.</span> <span class="toc-text">Commutative property:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#associative-property"><span class="toc-number">3.1.2.</span> <span class="toc-text">Associative property:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#distributive-property"><span class="toc-number">3.1.3.</span> <span class="toc-text">Distributive property:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#time-shifting-property"><span class="toc-number">3.1.4.</span> <span class="toc-text">Time shifting property:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#causallity"><span class="toc-number">3.1.5.</span> <span class="toc-text">Causallity:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#finite"><span class="toc-number">3.1.6.</span> <span class="toc-text">Finite</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stability-1"><span class="toc-number">3.1.7.</span> <span class="toc-text">Stability:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example"><span class="toc-number">3.2.</span> <span class="toc-text">EXAMPLE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#delay-system"><span class="toc-number">3.2.1.</span> <span class="toc-text">Delay system</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#moving-averag"><span class="toc-number">3.2.2.</span> <span class="toc-text">Moving averag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#accumulator"><span class="toc-number">3.2.3.</span> <span class="toc-text">Accumulator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#forward-difference"><span class="toc-number">3.2.4.</span> <span class="toc-text">Forward difference</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#backward-difference"><span class="toc-number">3.2.5.</span> <span class="toc-text">Backward difference</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#linear-constant-coefficient-difference-equations"><span class="toc-number">4.</span> <span class="toc-text">Linear
+Constant-Coefficient Difference Equations</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#initial-rest-condition"><span class="toc-number">4.1.</span> <span class="toc-text">initial-rest condition</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#frequency-domain-representation-of-signals-and-systems"><span class="toc-number">5.</span> <span class="toc-text">Frequency
+domain representation of signals and systems</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#discrete-time-fourier-transform"><span class="toc-number">6.</span> <span class="toc-text">Discrete-Time Fourier
+Transform</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/10/24/Discrete-time-Signal-Processing-2/" title="Discrete-time Signal Processing (2)"><img src="/img/favicon.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Discrete-time Signal Processing (2)"/></a><div class="content"><a class="title" href="/2024/10/24/Discrete-time-Signal-Processing-2/" title="Discrete-time Signal Processing (2)">Discrete-time Signal Processing (2)</a><time datetime="2024-10-25T02:20:53.000Z" title="Created 2024-10-24 22:20:53">2024-10-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/23/Discrete-time-Signal-Processing-1/" title="Discrete-time Signal Processing (1)"><img src="/img/favicon.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Discrete-time Signal Processing (1)"/></a><div class="content"><a class="title" href="/2024/10/23/Discrete-time-Signal-Processing-1/" title="Discrete-time Signal Processing (1)">Discrete-time Signal Processing (1)</a><time datetime="2024-10-23T23:50:38.000Z" title="Created 2024-10-23 19:50:38">2024-10-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/22/Evolutionary-Algorithms/" title="Evolutionary Algorithms"><img src="https://cdn.jsdelivr.net/gh/AtomChen0425/picx-images-hosting@master/Evolution-Algorithms/image.3goed9yogn.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Evolutionary Algorithms"/></a><div class="content"><a class="title" href="/2024/10/22/Evolutionary-Algorithms/" title="Evolutionary Algorithms">Evolutionary Algorithms</a><time datetime="2024-10-23T01:09:03.000Z" title="Created 2024-10-22 21:09:03">2024-10-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/17/ENCS692-2024-fall/" title="ENCS692-2024-fall"><img src="/img/favicon.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ENCS692-2024-fall"/></a><div class="content"><a class="title" href="/2024/09/17/ENCS692-2024-fall/" title="ENCS692-2024-fall">ENCS692-2024-fall</a><time datetime="2024-09-17T15:11:18.000Z" title="Created 2024-09-17 11:11:18">2024-09-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/20/softerware-testing/" title="Softerware Test"><img src="/img/favicon.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Softerware Test"/></a><div class="content"><a class="title" href="/2024/05/20/softerware-testing/" title="Softerware Test">Softerware Test</a><time datetime="2024-05-20T13:34:55.000Z" title="Created 2024-05-20 09:34:55">2024-05-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2024 By Yuhang Chen</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a rel="nofollow noopener"><span>YH </span></a><i class="iconfont icon-heart"></i><a rel="nofollow noopener"><span> GC</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'IwM9Wemmu4uk5ntEPJfWrdpr-gzGzoHsz',
+      appKey: 'JfMdF85ef98TICFdMwWhbc3m',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="10077489370" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,0" opacity="0.9" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="music"]):not([href="secret"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', 'G-Q463DDJ4VD', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
